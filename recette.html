@@ -3,68 +3,139 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <title>Your Title Here</title>
   </head>
   <body>
     <header>
-      <h1>L'ÉTS a du goût</h1>
-      <br />
-      <div>
-        <h2>Filtres</h2>
-        <p>Type de plat</p>
-        <select name="Tous" id="Tous">
-          <option value="" disabled selected>Tous</option>
-        </select>
-        <p>Type de cuisine</p>
-        <select name="Toutes" id="Toutes">
-          <option value="" disabled selected>Toutes</option>
-        </select>
+      <div class="Container-titre">
+        <h1>L'ÉTS a du goût</h1>
       </div>
-      <br />
+      <div class="Container-filtre">
+        <h2>Filtres</h2>
+        <p>Type de plat:</p>
+        <select class="Selector" name="Tous" id="Tous">
+          <option value="" disabled selected>Tous</option>
+          <option value="Biftecks">Biftecks</option>
+          <option value="Focaccia">Focaccia</option>
+          <option value="Salade Kani">Salade Kani</option>
+        </select>
+        <p>Type de cuisine:</p>
+        <select class="Selector" name="Toutes" id="Toutes">
+          <option value="" disabled selected>Toutes</option>
+          <option value="Africaine">Africaine</option>
+          <option value="Allemande">Allemande</option>
+          <option value="Asiatique">Asiatique</option>
+        </select>
+        <div class="recherhe">
+          <input
+            type="text"
+            id="searchField"
+            name="search"
+            placeholder="Rechercher..."
+          />
+          <button type="button" id="searchButton">Chercher</button>
+        </div>
+      </div>
     </header>
 
-    <main>
-      <h2>Nom</h2>
-      <img src="./images_recette/burgers.jpg" alt="Burger sur la planche" />
+    <main class="container-recette">
+      <h2 class="titre">Burger El pastor</h2>
+      <div class="recipe-info">
+        <div>
+          <img
+            src="./images_recette/burgers.jpg"
+            alt="Burger sur la planche"
+            class="image400px"
+          />
+        </div>
+        <div class="details">
+          <div class="info-section">
+            <img src="./images_recette/clock.png" alt="" class="serve-icon" />
+            <h3>Temps de préparation:</h3>
+            <p>40mn</p>
+          </div>
+
+          <div class="info-section">
+            <img
+              src="./images_recette/Knife-fork.jpg"
+              alt=""
+              class="serve-icon"
+            />
+            <h3>Type de plat:</h3>
+            <p>Plat principal</p>
+          </div>
+
+          <div class="info-section">
+            <img
+              src="./images_recette/serve-icon.png"
+              alt=""
+              class="serve-icon"
+            />
+            <h3>Type de cuisine:</h3>
+            <p>Texane</p>
+          </div>
+        </div>
+      </div>
 
       <table>
-        <caption>
-          Liste d'ingrédients
-        </caption>
+        <h4>Liste d'ingrédients</h4>
         <thead>
-          <th>Noms ingrédients</th>
-          <th>Quantité (tasses/cuillères)</th>
-          <th>Quantité (grammes)</th>
+          <tr>
+            <th>Nom de l'ingrédient</th>
+            <th>Quantité (Unité/cuillères)</th>
+            <th>Quantité (grammes/ml)</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
-            <td>ex1</td>
-            <td>ex2</td>
-            <td>ex3</td>
+            <td>2 pains à burger</td>
+            <td>2</td>
+            <td>120g</td>
           </tr>
           <tr>
-            <td>ex</td>
-            <td>ex</td>
-            <td>ex</td>
+            <td>1 steak haché</td>
+            <td>1</td>
+            <td>150g</td>
+          </tr>
+          <tr>
+            <td>1 tranche de fromage (cheddar, emmental ou autre)</td>
+            <td>1</td>
+            <td>30g</td>
+          </tr>
+          <tr>
+            <td>Feuilles de laitue</td>
+            <td>2</td>
+            <td>50g</td>
+          </tr>
+          <tr>
+            <td>Rondelles d'oignon (rouge ou blanc)</td>
+            <td>2</td>
+            <td>40g</td>
+          </tr>
+
+          <tr>
+            <td>Sauce barbecue</td>
+            <td>1c-à-soupe</td>
+            <td>15ml</td>
           </tr>
         </tbody>
       </table>
+
       <br />
       <h4>Étape de préparation de la recette</h4>
       <ol>
-        <li>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto nobis
-          corporis similique ratione voluptatibus. Obcaecati dolorem quos
-          nesciunt quia rem.
-        </li>
-        <li>Étape 2</li>
-        <li>Étape 3</li>
-        <li>Étape 4</li>
+        <li>Trancher l'oignon et la tomate</li>
+        <li>Former une boulette avec la viande et la cuire barbecue</li>
+        <li>Assembler le tous en ajoutant une tranche de fromage</li>
+        <li>Décorer</li>
       </ol>
     </main>
 
     <footer>
       <p>© 2024 Recettes de cuisine. Tous droits réservés.</p>
+      <p>Auteurs: Amine El Hila & Aya Rehimi</p>
     </footer>
   </body>
 </html>
