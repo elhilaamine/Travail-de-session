@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acceuil</title>
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="Grid">
+      <header>
+        <div class="Container-titre">
+          <h1>L'ÉTS a du goût</h1>
+        </div>
+        <div class="Container-filtre">
+          <h2>Filtres</h2>
+          <p>Type de plat:</p>
+          <select class="Selector" name="Tous" id="Tous">
+            <option value="" disabled selected>Tous</option>
+            <option value="Biftecks">Biftecks</option>
+            <option value="Focaccia">Focaccia</option>
+            <option value="Salade Kani">Salade Kani</option>
+          </select>
+          <p>Type de cuisine:</p>
+          <select class="Selector" name="Toutes" id="Toutes">
+            <option value="" disabled selected>Toutes</option>
+            <option value="Africaine">Africaine</option>
+            <option value="Allemande">Allemande</option>
+            <option value="Asiatique">Asiatique</option>
+          </select>
+        </div>
+      </header>
+      <main>
+        <div class="Container-articles">
+          <article>
+            <img
+              src="./images_recette/bifteck.jpg"
+              alt="Bifteck sur un grille"
+            />
+            <h3>Biftecks au four à Pizza</h3>
+            <p>Pour les amateurs de viande.</p>
+          </article>
+
+          <article>
+            <img src="./images_recette/focaccia.jpg" alt="Focaccia rosemary" />
+            <h3>Focaccia</h3>
+            <p>
+              Une entrée italienne typique pour accompagner vos plats de pâtes.
+            </p>
+          </article>
+
+          <article>
+            <img
+              src="./images_recette/salade.jpg"
+              alt="Salade Kani sur une table"
+            />
+            <h3>Salade Kani</h3>
+            <p>Une salade raffraichissante pour vos soirées d'été.</p>
+          </article>
+
+          <article>
+            <img src="./images_recette/nems.jpg" alt="Nems au poulet" />
+            <h3>Nems au poulet grillé</h3>
+            <p>
+              Un nem vietnamien, enroulé avec des rubans de carottes dans des
+              feuilles de laitue.
+            </p>
+          </article>
+
+          <article>
+            <img src="./images_recette/burgers.jpg" alt="Burgers al pastor" />
+            <h3>Burger al pastor</h3>
+            <p>Le meilleur burger en ville.</p>
+          </article>
+        </div>
+      </main>
+      <footer>
+        <p>© 2024 Recettes de cuisine. Tous droits réservés.</p>
+      </footer>
+    </div>
+  </body>
+</html>
