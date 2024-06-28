@@ -1,3 +1,16 @@
+<?php
+require_once('./config.php');
+
+//si l'utilisateur est deja connecter, ne pas demander la connexion a chaque fois, une seule suffie.
+if( !  isset($_SESSION["user_loggedin"]) ){
+  header("Location: login.php");
+  exit();
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,6 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./normalize.css" />
     <link rel="stylesheet" href="./styles.css" />
+    <script src="script.js?id=10"></script>
+
     <title>Your Title Here</title>
   </head>
   <body>
@@ -16,17 +31,29 @@
         <h2>Filtres</h2>
         <p>Type de plat:</p>
         <select class="Selector" name="Tous" id="Tous">
-          <option value="" disabled selected>Tous</option>
-          <option value="Biftecks">Biftecks</option>
-          <option value="Focaccia">Focaccia</option>
-          <option value="Salade Kani">Salade Kani</option>
+        <option value="" selected>Tous</option>
+            <?php
+            $types_plats = liste_types_plats($conn);
+            $longueur_tab = count($types_plats);
+            for($i=0; $i<$longueur_tab;$i++)
+            {
+              $nom = $types_plats[$i]['nom'];
+              echo "<option value=\"" . $types_plats[$i]['nom'] . "\">$nom</option>";    
+            }
+            ?>
         </select>
         <p>Type de cuisine:</p>
         <select class="Selector" name="Toutes" id="Toutes">
-          <option value="" disabled selected>Toutes</option>
-          <option value="Africaine">Africaine</option>
-          <option value="Allemande">Allemande</option>
-          <option value="Asiatique">Asiatique</option>
+        <option value=""  selected>Toutes</option>
+           <?php
+            $types_cuisine = liste_types_cuisines($conn);
+            $longueur_tab = count($types_cuisine);
+            for($i=0; $i<$longueur_tab;$i++)
+            {
+              $nom = $types_cuisine[$i]['nom'];
+              echo "<option value=\"" . $types_cuisine[$i]['nom'] . "\" >$nom</option>";    
+            }
+            ?>
         </select>
         <div class="recherhe">
           <input
@@ -41,7 +68,7 @@
     </header>
 
     <main class="container-recette">
-      <h2 class="titre">Burger El pastor</h2>
+      <h2 class="titre" id="titre_recette"></h2>
       <div class="recipe-info">
         <div>
           <img
@@ -54,7 +81,7 @@
           <div class="info-section">
             <img src="./images_recette/clock.png" alt="" class="serve-icon" />
             <h3>Temps de préparation:</h3>
-            <p>40mn</p>
+            <p id="tps_prep"></p>
           </div>
 
           <div class="info-section">
@@ -64,7 +91,7 @@
               class="serve-icon"
             />
             <h3>Type de plat:</h3>
-            <p>Plat principal</p>
+            <p id="type_plat"></p>
           </div>
 
           <div class="info-section">
@@ -74,7 +101,7 @@
               class="serve-icon"
             />
             <h3>Type de cuisine:</h3>
-            <p>Texane</p>
+            <p id="type_cuisine"></p>
           </div>
         </div>
       </div>
@@ -88,54 +115,46 @@
             <th>Quantité (grammes/ml)</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>2 pains à burger</td>
-            <td>2</td>
-            <td>120g</td>
-          </tr>
-          <tr>
-            <td>1 steak haché</td>
-            <td>1</td>
-            <td>150g</td>
-          </tr>
-          <tr>
-            <td>1 tranche de fromage (cheddar, emmental ou autre)</td>
-            <td>1</td>
-            <td>30g</td>
-          </tr>
-          <tr>
-            <td>Feuilles de laitue</td>
-            <td>2</td>
-            <td>50g</td>
-          </tr>
-          <tr>
-            <td>Rondelles d'oignon (rouge ou blanc)</td>
-            <td>2</td>
-            <td>40g</td>
-          </tr>
-
-          <tr>
-            <td>Sauce barbecue</td>
-            <td>1c-à-soupe</td>
-            <td>15ml</td>
-          </tr>
-        </tbody>
+        <tbody class="body_table"></tbody>
       </table>
-
-      <br />
       <h4>Étape de préparation de la recette</h4>
-      <ol>
-        <li>Trancher l'oignon et la tomate</li>
-        <li>Former une boulette avec la viande et la cuire barbecue</li>
-        <li>Assembler le tous en ajoutant une tranche de fromage</li>
-        <li>Décorer</li>
-      </ol>
+      <ol class="liste"></ol>
     </main>
-
     <footer>
       <p>© 2024 Recettes de cuisine. Tous droits réservés.</p>
       <p>Auteurs: Amine El Hila & Aya Rehimi</p>
     </footer>
   </body>
+  <script>
+
+
+    types_plats = <?= json_encode($types_plats) ?> ; 
+    types_cuisines= <?= json_encode($types_cuisine)  ?>;
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+
+       const urlParams = new URLSearchParams(window.location.search);
+       const recetteId = parseInt(urlParams.get("id"));
+
+
+
+      fetch("/api/recettes/"+recetteId)
+        .then(response=>{
+            if(!response.ok) throw new Error("Impossible de charger...");
+
+            return response.json();
+        })
+        .then( data=>{
+    
+            afficher_recette(data);
+        } )
+        .catch(error=>{
+            alert(error.message);
+        } )
+       
+
+
+
+    });
+  </script>
 </html>

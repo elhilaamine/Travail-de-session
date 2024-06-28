@@ -1,6 +1,10 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html{
+  /*font-size: 62.5%;*/
+}
 body{
   margin: 0rem;
 }  
@@ -14,6 +18,7 @@ h1{
   padding-top: 1rem;
   display: flex;
   justify-content: center;
+
 }
 
 .Container-filtre {
@@ -36,12 +41,13 @@ h1{
   justify-content: center;
 }
 
-Article{
+article{
   width: 200px;
   padding: 1rem;
   box-shadow: 5px 5px 10px 2px rgba(225, 225, 225, 0.8);
   border-radius: 0.5rem;
 }
+
 .Selector{
   width: 6rem;
   height: 1.5rem;
@@ -49,78 +55,88 @@ Article{
   padding-left: 0.25rem;
   color: rgba(70, 70, 70, 0.7);
 }
-footer{
-background-color:red;
-color:azure;
-height: 4rem;
-padding: 1rem;
-text-align: center;
-display: flex;
-flex-direction: column;
-justify-content: center;
-}
-.Grid{
-display:grid;
 
+footer{
+  background-color:red;
+  color:azure;
+  height: 4rem;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Grid{
+  display:grid;
 }
 
 .container-name{
-color: red;
-
+  color: red;
 }
 
 h4{
-color:red;
+  color:red;
 }
+
 .container-recette {
-margin: 2rem 10rem;
-display: grid;
-
-
+  margin: 2rem 4rem;
+  display: grid;
 }
 
 .recipe-info {
-display: flex;
-align-items: flex-start;
-gap: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
 .details {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .info-section {
-display: flex;
-align-items: center;
-gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .serve-icon {
-width: 50px;
-height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .image400px {
-height: auto;
+  height: auto;
+  max-width: 400px;
 }
 
 td{
-text-decoration: underline;
-
+  text-decoration: underline;
 }
 
 th{
-text-align: left;
+  text-align: left;
 }
 
 .titre{
-color:red;
+  color:red;
 }
 
 .recherche{
   display: flex;
   flex-direction: row;
 }
+
+.img200px{
+  width:200px;
+  height:auto;
+}
+
+.Container-articles img {
+  width: 100%;
+}
+
+
+
